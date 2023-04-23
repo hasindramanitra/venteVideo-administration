@@ -1,0 +1,38 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}
+    Administration Des Films
+{% endblock %}
+{% block body %}
+    <h1>Administration Des Films</h1>
+    <a href="{{path('adminFilm.new')}}" class="btn btn-info" role="button">Créer Un Film</a>
+    <table>
+        <thead>
+            <tr>
+                <td>Numero</td>
+                <td>Titre</td>
+                <td>Annee De sortie</td>
+                <td>Durée du Film</td>
+                <td>Prix</td>
+                <td>Image</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            
+                {% for item in films %}
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.anneeDeSortie}}</td>
+                        <td>{{item.duration}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.filmImageName}}</td>
+                        <td><a href="{{path('adminFilm.update', {id: item.id})}}"  class="btn btn-warning" role="button">Modifier</a></td>
+                        <td><a href="{{path('adminFilm.delete', {id: item.id})}}"  class="btn btn-danger" role="button">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            
+        </tbody>
+    </table>
+{% endblock %}

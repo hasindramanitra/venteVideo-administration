@@ -9,29 +9,42 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
+        <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" defer></script>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        
         </head>
             <body>
-                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <nav class="navbar navbar-expand-lg bg-info">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Vente de Vidéo</a>
+                        <a class="navbar-brand" href="#">Administration</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{path('admin.user')}}">Utilisateurs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="{{path('admin.film')}}">Films</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('admin.documentaire')}}">Documentaires</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('admin.genre')}}">Genres des vidéos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('admin.serie')}}">Series</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('admin.saison')}}">Saisons des series</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                               dropod
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Action</a></li>

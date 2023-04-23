@@ -1,0 +1,35 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+    <h1>La liste de vos utilisateurs</h1>
+    <a href="{{path('adminUser.new')}}" class="btn btn-info" role="button">Ajouter un nouveau utilisateur</a>
+    {% if users|length <=0 %}
+        <h2>Votre site n'a pas encore d'utilisateurs inscrits</h2>
+    {% endif %}
+    <table>
+        <thead>
+            <tr>
+                <td>Numero</td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Email</td>
+                <td>Adresse</td>
+                <td>Date de création</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.fullname}}</td>
+                    <td>{{user.lastname}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.adress}}</td>
+                    <td>{{user.createdAt | date('Y-m-d')}}</td>
+                    <td><a href="{{path('adminUser.update', {id: user.id})}}" class="btn btn-warning" role="button">Modifier</a></td>
+                    <td><a href="{{path('adminUser.delete', {id: user.id})}}" class="btn btn-danger" role="button">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

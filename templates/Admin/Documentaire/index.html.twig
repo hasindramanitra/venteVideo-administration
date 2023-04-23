@@ -1,0 +1,37 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+    <h1>Mes Documentaires</h1>
+    <h2><a href="{{path('adminDoc.new')}}"  class="btn btn-info" role="button">Ajouter un Documentaire</a></h2>
+    {% if doc|length  <=0 %}
+        <h2>vous n'avez encore ajouter des documentaires dans votre page</h2>
+    {% endif %}
+    <table>
+        <thead>
+            <tr>
+                <td>Numero</td>
+                <td>Titre</td>
+                <td>Année de sortie</td>
+                <td>Durée</td>
+                <td>Prix</td>
+                <td>Description</td>
+                <td>Image</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for docs in doc %}
+                <tr>
+                    <td>{{docs.id}}</td>
+                    <td>{{docs.title}}</td>
+                    <td>{{docs.anneeDeSortie}}</td>
+                    <td>{{docs.duration}}</td>
+                    <td>{{docs.price}}</td>
+                    <td>{{docs.description}}</td>
+                    <td>{{docs.documentaireImageName}}</td>
+                    <td><a href="{{path('adminDoc.update', {id: docs.id})}}"  class="btn btn-warning" role="button">Modifer</a></td>
+                    <td><a href="{{path('adminDoc.delete', {id: docs.id})}}"  class="btn btn-danger" role="button">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

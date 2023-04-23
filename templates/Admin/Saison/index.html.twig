@@ -1,0 +1,31 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+    <h1>Administration des saisons</h1>
+    <h2><a href="{{path('adminSaison.new')}}"  class="btn btn-info" role="button">Ajouter une saison </a></h2>
+    {% if saisons|length<=0 %}
+        <h2>Vous n'avez pas de saisons</h2>
+    {% endif %}
+    <table>
+        <thead>
+            <tr>
+                <td>Numero</td>
+                <td>Nom</td>
+                <td>Nom de la Serie</td>
+                <td>Durée de chaque épisode</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for saison in saisons %}
+                <tr>
+                    <td>{{ saison.id }}</td>
+                    <td>{{ saison.name }}</td>
+                    <td>{{ saison.serie }}</td>
+                    <td>{{ saison.durationEachEpisode }}</td>
+                    <td><a href="{{path('adminSaison.update', {id: saison.id})}}"  class="btn btn-warning" role="button">Modifier</a></td>
+                    <td><a href="{{path('adminSaison.delete', {id: saison.id})}}"  class="btn btn-danger" role="button">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

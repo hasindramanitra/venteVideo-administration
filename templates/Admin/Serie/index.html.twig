@@ -1,0 +1,37 @@
+{% extends 'base1.html.twig' %}
+{% block title %}
+    serie
+{% endblock %}
+{% block body %}
+    <h1>Administration des Series</h1>
+    <h3><a href="{{path('adminSerie.new')}}" class="btn btn-info" role="button">créer une nouvelle serie</a></h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Numero</td>
+                <td>Titre</td>
+                <td>Description</td>
+                <td>Acteurs</td>
+                <td>Année de sortie</td>
+                <td>Prix d'une saison</td>
+                <td>Photo de la serie</td>
+                <td>Actions</td>
+            </tr>
+        <thead>
+        <tbody>
+            {% for serie in series %}
+                <tr>
+                    <td>{{serie.id}}</td>
+                    <td>{{serie.title}}</td>
+                    <td>{{serie.description}}</td>
+                    <td>{{serie.authors}}</td>
+                    <td>{{serie.anneeDeSortie}}</td>
+                    <td>{{serie.priceBySeason}}</td>
+                    <td>{{serie.serieImageFile}}</td>
+                    <td><a href="{{path('adminSerie.update', {id: serie.id})}}"  class="btn btn-warning" role="button">Modifier</a></td>
+                    <td><a href="{{path('adminSerie.delete', {id: serie.id})}}"  class="btn btn-danger" role="button">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
