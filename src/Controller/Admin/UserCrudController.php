@@ -17,7 +17,7 @@ class UserCrudController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     public function index(UserRepository $userRepository):Response
     {
-        return $this->render('Admin/User/index.html.twig', [
+        return $this->render('Admin/UserAdmin/index.html.twig', [
             'users'=>$userRepository->findAll()
         ]);
     }
@@ -36,7 +36,7 @@ class UserCrudController extends AbstractController
 
             return $this->redirectToRoute("admin.user");
         }
-        return $this->render('Admin/User/new.html.twig', [
+        return $this->render('Admin/UserAdmin/new.html.twig', [
             'form'=> $form->createView()
         ]);
     }
@@ -55,7 +55,7 @@ class UserCrudController extends AbstractController
 
             return $this->redirectToRoute('admin.user');
         }
-        return $this->render('Admin/User/update.html.twig', [
+        return $this->render('Admin/UserAdmin/update.html.twig', [
             'form'=>$form->createView()
         ]);
     }
